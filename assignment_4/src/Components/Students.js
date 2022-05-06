@@ -2,6 +2,10 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 const Student = ({ id, name, age, math, english, history, avgScore, onDelete }) => {
+    const handleGetId = () => {
+        onDelete(id);
+    };
+
     return (
         <tr>
             <th scope='row'>{id}</th>
@@ -13,7 +17,9 @@ const Student = ({ id, name, age, math, english, history, avgScore, onDelete }) 
             <td>{avgScore}</td>
             <td>
                 <Button color='success'>Update</Button>
-                <Button color='danger'>Delete</Button>
+                <Button color='danger' onClick={handleGetId}>
+                    Delete
+                </Button>
             </td>
         </tr>
     );

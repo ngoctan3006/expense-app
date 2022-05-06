@@ -28,6 +28,11 @@ function App() {
         setListStudents([...listStudents, student]);
     };
 
+    const handleDelStudent = (id) => {
+        const newListStudents = listStudents.filter((student) => student.id !== id);
+        setListStudents(newListStudents);
+    };
+
     return (
         <Container>
             <ModalStudent onAddStudent={handleSubmitStudent} />
@@ -59,6 +64,7 @@ function App() {
                                     (parseInt(e.math) + parseInt(e.english) + parseInt(e.history)) /
                                     3
                                 ).toFixed(2)}
+                                onDelete={handleDelStudent}
                             />
                         );
                     })}
