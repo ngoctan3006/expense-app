@@ -1,15 +1,9 @@
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import React, { useState } from 'react';
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 
-function ModalStudent({ onAddStudent }) {
-    const [info, setInfo] = useState({});
+const UpdateStudent = ({ oldValue, onUpdate }) => {
+    const [info, setInfo] = useState(oldValue);
     const [show, setShow] = useState(false);
-
-    const handleAddStudent = () => {
-        onAddStudent(info);
-        setShow(false);
-        setInfo({});
-    };
 
     const handleChange = (e) => {
         setInfo((prev) => ({
@@ -18,12 +12,18 @@ function ModalStudent({ onAddStudent }) {
         }));
     };
 
+    const handleUpdate = () => {
+        setShow(false);
+        onUpdate(info.id, info);
+    };
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     return (
         <>
-            <Button variant='primary' onClick={handleShow}>
-                Add new student
+            <Button className='me-2' variant='success' onClick={handleShow}>
+                Update
             </Button>
 
             <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false}>
@@ -102,13 +102,13 @@ function ModalStudent({ onAddStudent }) {
                     <Button variant='secondary' onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant='primary' onClick={handleAddStudent}>
-                        Add
+                    <Button variant='success' onClick={handleUpdate}>
+                        Update
                     </Button>
                 </Modal.Footer>
             </Modal>
         </>
     );
-}
+};
 
-export default ModalStudent;
+export default UpdateStudent;

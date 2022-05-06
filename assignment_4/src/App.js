@@ -28,6 +28,13 @@ function App() {
         setListStudents([...listStudents, student]);
     };
 
+    const handleUpdate = (id, newValue) => {
+        const newListStudents = listStudents.map((student) =>
+            student.id === id ? newValue : student
+        );
+        setListStudents(newListStudents);
+    };
+
     const handleDelStudent = (id) => {
         const newListStudents = listStudents.filter((student) => student.id !== id);
         setListStudents(newListStudents);
@@ -54,17 +61,13 @@ function App() {
                         return (
                             <Student
                                 key={i}
-                                id={e.id}
-                                name={e.name}
-                                age={e.age}
-                                math={e.math}
-                                english={e.english}
-                                history={e.history}
+                                info={listStudents[i]}
                                 avgScore={(
                                     (parseInt(e.math) + parseInt(e.english) + parseInt(e.history)) /
                                     3
                                 ).toFixed(2)}
                                 onDelete={handleDelStudent}
+                                onUpdate={handleUpdate}
                             />
                         );
                     })}

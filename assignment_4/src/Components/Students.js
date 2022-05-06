@@ -1,23 +1,25 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 
-const Student = ({ id, name, age, math, english, history, avgScore, onDelete }) => {
+import UpdateStudent from './UpdateStudent';
+
+const Student = ({ info, avgScore, onDelete, onUpdate }) => {
     const handleGetId = () => {
-        onDelete(id);
+        onDelete(info.id);
     };
 
     return (
         <tr>
-            <th scope='row'>{id}</th>
-            <td>{name}</td>
-            <td>{age}</td>
-            <td>{math}</td>
-            <td>{english}</td>
-            <td>{history}</td>
+            <th scope='row'>{info.id}</th>
+            <td>{info.name}</td>
+            <td>{info.age}</td>
+            <td>{info.math}</td>
+            <td>{info.english}</td>
+            <td>{info.history}</td>
             <td>{avgScore}</td>
             <td>
-                <Button color='success'>Update</Button>
-                <Button color='danger' onClick={handleGetId}>
+                <UpdateStudent oldValue={info} onUpdate={onUpdate} />
+                <Button variant='danger' onClick={handleGetId}>
                     Delete
                 </Button>
             </td>
