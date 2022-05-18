@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ExpenseHeading from './Components/ExpenseHeading';
 import ExpenseItems from './Components/ExpenseItems';
 
-function App() {
+const App = () => {
     const [listExpense, setListExpense] = useState([
         {
             title: 'Finish HW',
@@ -23,18 +23,18 @@ function App() {
         },
     ]);
 
-    const handleSubmitExpense = (expense) => {
+    const handleAddExpense = (expense) => {
         setListExpense([...listExpense, expense]);
     };
 
     return (
-        <div className='App'>
-            <div className='main'>
-                <ExpenseHeading onAddExpense={handleSubmitExpense} />
-                <div className='container'>
-                    <div className='filter'>
+        <div className="App">
+            <div className="main">
+                <ExpenseHeading handleAddExpense={handleAddExpense} />
+                <div className="container">
+                    <div className="filter">
                         <p>Filter by year</p>
-                        <div className='year-selector'>
+                        <div className="year-selector">
                             <select>
                                 <option>2020</option>
                                 <option>2021</option>
@@ -44,101 +44,101 @@ function App() {
                         </div>
                     </div>
 
-                    <div className='chart-container'>
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                    <div className="chart-container">
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Jan</p>
+                            <p className="month">Jan</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Feb</p>
+                            <p className="month">Feb</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Mar</p>
+                            <p className="month">Mar</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Apr</p>
+                            <p className="month">Apr</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>May</p>
+                            <p className="month">May</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Jun</p>
+                            <p className="month">Jun</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Jul</p>
+                            <p className="month">Jul</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Aug</p>
+                            <p className="month">Aug</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Sep</p>
+                            <p className="month">Sep</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Oct</p>
+                            <p className="month">Oct</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Nov</p>
+                            <p className="month">Nov</p>
                         </div>
 
-                        <div className='chart-item'>
-                            <div className='bar'>
-                                <div className='fill'></div>
+                        <div className="chart-item">
+                            <div className="bar">
+                                <div className="fill"></div>
                             </div>
-                            <p className='month'>Dec</p>
+                            <p className="month">Dec</p>
                         </div>
                     </div>
 
-                    <div className='expense-container'>
+                    <div className="expense-container">
                         {listExpense.map((e, i) => {
-                            return <ExpenseItems key={i} item={listExpense[i]} />;
+                            return <ExpenseItems key={i} item={e} />;
                         })}
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default App;
